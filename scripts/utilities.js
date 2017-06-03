@@ -1,6 +1,6 @@
-function forEach(points, animatePoints){
-	for(var i = 0; i < points.length; i++){
+function forEach(array, callback){
+	for(var i = 0; i < array.length; i++){
 		//execute callback
-		animatePoints();
+		callback(array[i]);
 	}
 }
