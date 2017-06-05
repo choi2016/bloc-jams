@@ -29,6 +29,18 @@
          { title: 'Wrong phone number', duration: '2:15'}
      ]
  };
+  var albumEdward = {
+     title: 'The Edward',
+     artist: 'Edward Choi',
+     label: 'EJC',
+     year: '2017',
+     albumArtUrl: 'assets/images/album_covers/21.png',
+     songs: [
+         { title: 'aaaaaa', duration: '1:01' },
+         { title: 'bbbbbb', duration: '5:01' },
+         { title: 'cccccc', duration: '3:21'},
+     ]
+ };
 
   var createSongRow = function(songNumber, songName, songLength) {
      var template =
@@ -66,5 +78,9 @@
  };
  
  window.onload = function() {
-     setCurrentAlbum(albumPicasso);
+//added event listener so that when the user clicks on hte album-cover of their choosing, 
+//the page will toggle to that page
+     window.addEventListener('click', function(event){
+         setCurrentAlbum('album-cover-art'.onclick);
+     });
  };
