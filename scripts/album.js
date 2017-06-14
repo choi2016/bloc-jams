@@ -136,9 +136,6 @@ var getSongItem = function(element) {
 
  var currentlyPlayingSong = null;
 
-
-
-
  window.onload = function() {
 //added event listener so that when the user clicks on hte album-cover of their choosing, 
 //the page will toggle to that page
