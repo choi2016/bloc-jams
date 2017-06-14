@@ -85,18 +85,25 @@
 var findParentByClassName = function(element, targetClass) {
     
     var currentParent = element.parentElement;
-
+    var classNameOfCurrentParent = currentparent.className;
+        
+    //if currentParent exists
     if (currentParent !== null) {
-        if(currentParent == null){
-            while (currentParent.className !== targetClass && currentParent.className !== null) {
-                currentParent = currentParent.parentElement;
-        }else{
-            console.log('No parent found with that class name');
+        while (currentParent.className !== targetClass && currentParent !== null) {
+            currentParent = currentParent.parentElement;
         }
+        //if currentParent doesn't match targetClass
+        if(currentParent == null){
+            console.log('No parent found with that class name');
+            return null;
+        //if currentParent does match targetClass
+        } else {
+            return currentParent;
+        }
+    //if no parents are found
     } else {
         console.log("No parents found");
     }
-    return currentParent;
 };
 
 var getSongItem = function(element) {
