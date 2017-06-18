@@ -61,7 +61,7 @@
      var $albumArtist = $('.album-view-artist');
      var $albumReleaseInfo = $('.album-view-release-info');
      var $albumImage = $('.album-cover-art');
-     var $albumSongList = ('.album-view-song-list');
+     var $albumSongList = $('.album-view-song-list');
      // #2
      $albumTitle.text(album.title);
      $albumArtist.text(album.artist);
