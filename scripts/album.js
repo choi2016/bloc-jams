@@ -134,7 +134,7 @@ var getSongItem = function(element) {
  window.onload = function() {
 //added event listener so that when the user clicks on hte album-cover of their choosing, 
 //the page will toggle to that page
-
+         setCurrentAlbum(albumEdward);
          songListContainer.addEventListener('mouseover', function(event) {
 
              if (event.target.parentElement.className === 'album-view-song-item') {
