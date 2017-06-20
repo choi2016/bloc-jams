@@ -134,7 +134,6 @@ var getSongItem = function(element) {
  window.onload = function() {
 //added event listener so that when the user clicks on hte album-cover of their choosing, 
 //the page will toggle to that page
-     setCurrentAlbum(albumEdward);
 
          songListContainer.addEventListener('mouseover', function(event) {
 
@@ -156,18 +155,11 @@ var getSongItem = function(element) {
                  songItem.innerHTML = songItemNumber;
              }
          });
+
          songRows[i].addEventListener('click', function(event) {
              clickHandler(event.target);
          });
      }
-     var albums = [albumPicasso, albumMarconi, albumEdward];
-     var index = 1; 
-
-     albumImage.addEventListener("click", function(event){
-         setCurrentAlbum(albums[index]);
-         index++;
-         if( index == albums.length){
-            index = 0;
-         } 
-     });
- };
+  
+};
+ 
