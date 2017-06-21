@@ -1,4 +1,3 @@
- 
  var albumPicasso = {
      title: 'The Colors',
      artist: 'Pablo Picasso',
@@ -107,8 +106,7 @@
  
      for (var i = 0; i < album.songs.length; i++) {
          var $newRow = createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
-         $albumSongList.append($newRow);     
-     }
+         $albumSongList.append($newRow);     }
  };
  
  var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
@@ -118,6 +116,6 @@
 
  $(document).ready(function() {
 
-    setCurrentAlbum(albumEdward);
+         setCurrentAlbum(albumEdward);
   
- });
+ };
