@@ -118,4 +118,4 @@
 
          setCurrentAlbum(albumEdward);
   
- };
+ });
