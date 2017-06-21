@@ -1,4 +1,3 @@
- 
  var albumPicasso = {
      title: 'The Colors',
      artist: 'Pablo Picasso',
@@ -52,28 +51,62 @@
  
      var $row = $(template);
 
+    var clickHandler = function() {
+        var songNumber = $(this).attr('data-song-number');
 
+        if (currentlyPlayingSong !== null) {
+            var currentlyPlayingCell = $('.song-item-number[data-song-number="' + currentlyPlayingSong + '"]');
+            currentlyPlayingCell.html(currentlyPlayingSong);
+        }
+        if (currentlyPlayingSong !== songNumber) {
+            $(this).html(pauseButtonTemplate);
+            currentlyPlayingSong = songNumber;
+        } else if (currentlyPlayingSong === songNumber) {
+            $(this).html(playButtonTemplate);
+            currentlyPlayingSong = null;
+        }
+    };
+ 
+     var onHover = function(event) {
+         var songNumberCell = $(this).find('.song-item-number');
+         var songNumber = songNumberCell.attr('data-song-number');
+
+         if(songNumber !== currentlyPlayingSong){
+            songNumberCell.html(playButtonTemplate);
+         }
+     };
+     var offHover = function(event) {
+         var songNumberCell = $(this).find('.song-item-number');
+         var songNumber = songNumberCell.attr('data-song-number');
+
+         if(songNumber !== currentlyPlayingSong){
+            songNumberCell.html(songNumber);
+         }
+     };
+ 
+     $row.find('.song-item-number').click(clickHandler);
+     $row.hover(onHover, offHover);
+     return $row;
+ };
 
  var setCurrentAlbum = function(album) {
+     // #1
      var $albumTitle = $('.album-view-title');
      var $albumArtist = $('.album-view-artist');
      var $albumReleaseInfo = $('.album-view-release-info');
      var $albumImage = $('.album-cover-art');
      var $albumSongList = $('.album-view-song-list');
-     // #2
+
      $albumTitle.text(album.title);
      $albumArtist.text(album.artist);
      $albumReleaseInfo.text(album.year + ' ' + album.label);
      $albumImage.attr('src', album.albumArtUrl);
  
-     // #3
      $albumSongList.empty();
  
-     // #4
      for (var i = 0; i < album.songs.length; i++) {
          var $newRow = createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
-         $albumSongList.append($newRow);     
-     }
+         $albumSongList.append($newRow);     }
  };
  
  var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
@@ -81,34 +114,8 @@
 
  var currentlyPlayingSong = null;
 
- window.onload = function() {
-//added event listener so that when the user clicks on hte album-cover of their choosing, 
-//the page will toggle to that page
+ $(document).ready(function() {
+
          setCurrentAlbum(albumEdward);
-         songListContainer.addEventListener('mouseover', function(event) {
-
-             if (event.target.parentElement.className === 'album-view-song-item') {
-                var songItem = getSongItem(event.target);
-
-                if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {
-                    songItem.innerHTML = playButtonTemplate;
-                }
-             }
-         });
-         
-         for (var i = 0; i < songRows.length; i++) {
-         songRows[i].addEventListener('mouseleave', function(event) {
-             var songItem = getSongItem(event.target);
-             var songItemNumber = songItem.getAttribute('data-song-number');
-
-             if (songItemNumber !== currentlyPlayingSong) {
-                 songItem.innerHTML = songItemNumber;
-             }
-         });
-
-         songRows[i].addEventListener('click', function(event) {
-             clickHandler(event.target);
-         });
-     }
   
- });
+ };
