@@ -91,7 +91,7 @@
  };
 
  var setCurrentAlbum = function(album) {
-
+     // #1
      var $albumTitle = $('.album-view-title');
      var $albumArtist = $('.album-view-artist');
      var $albumReleaseInfo = $('.album-view-release-info');
@@ -107,11 +107,10 @@
  
      for (var i = 0; i < album.songs.length; i++) {
          var $newRow = createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
-         $albumSongList.append($newRow);     }
+         $albumSongList.append($newRow);     
+     }
  };
  
-
-
  var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
  var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>'; 
 
@@ -121,5 +120,4 @@
 
     setCurrentAlbum(albumEdward);
   
-});
- 
+ });
