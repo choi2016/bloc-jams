@@ -166,7 +166,10 @@
  
  var isClicked = false;
 
+ var $playPauseButton = $('.main-controls .play-pause');
+
  var togglePlayFromPlayerBar = $playPauseButton.click(function(){
+     var songNumberCell = $(this).find('.song-item-number');
 
      if(currentSoundFile.isPaused() && isClicked == false){
         songNumberCell.html(pauseButtonTemplate);
@@ -194,7 +197,6 @@
 
  var $previousButton = $('.main-controls .previous');
  var $nextButton = $('.main-controls .next');
- var $playPauseButton = $('.main-controls .play-pause');
 
  $(document).ready(function() {
 
