@@ -164,18 +164,22 @@
      $lastSongNumberCell.html(lastSongNumber);
  };
  
- var togglePlayFromPlayerBar = function(){
+ var isClicked = false;
 
-     if(currentSoundFile.isPaused() && $playPauseButton.html(playerBarPlayButton).clicked == true){
+ var togglePlayFromPlayerBar = $playPauseButton.click(function(){
+
+     if(currentSoundFile.isPaused() && isClicked == false){
         songNumberCell.html(pauseButtonTemplate);
         $playPauseButton.html(playerBarPauseButton);
+        isClicked = true;
         currentSoundFile.play();
-     }else if(currentSoundFile && $playPauseButton.html(playerBarPauseButton).clicked == true){
+     }else if(currentSoundFile && isClicked == true){
         songNumberCell.html(playButtonTemplate);
         $playPauseButton.html(playerBarPlayButton);
+        isClicked = false;
         currentSoundFile.pause();
      }
- }
+ });
  
  var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
  var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>'; 
