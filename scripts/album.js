@@ -70,7 +70,6 @@
             $volumeFill.width(currentVolume + '%');
             $volumeThumb.css({left: currentVolume + '%'});
            
-            $(this).html(pauseButtonTemplate);
             updatePlayerBarSong();
          } else if (currentlyPlayingSongNumber === songNumber) {
             $('.main-controls .play-pause').html(playerBarPlayButton);
@@ -104,6 +103,7 @@
          if(songNumber !== currentlyPlayingSongNumber){
             songNumberCell.html(songNumber);
          }
+
      };
  
      $row.find('.song-item-number').click(clickHandler);
@@ -128,7 +128,8 @@
  
      for (var i = 0; i < album.songs.length; i++) {
          var $newRow = createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
-         $albumSongList.append($newRow);     }
+         $albumSongList.append($newRow);
+     }
  };
 
  var setCurrentTimeInPlayerBar = function(currentTime) {
@@ -197,18 +198,18 @@ var setupSeekBars = function() {
     });
 };
 
+ var trackIndex = function(album, song) {
+     return album.songs.indexOf(song);
+ };
+ 
  var updatePlayerBarSong = function() {
 
      $('.currently-playing .song-name').text(currentSongFromAlbum.title);
      $('.currently-playing .artist-name').text(currentAlbum.artist);
      $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title + " - " + currentAlbum.artist);
-
      $('.main-controls .play-pause').html(playerBarPauseButton);
+
      setTotalTimeInPlayerbar(currentSongFromAlbum.duration);
- };
- 
- var trackIndex = function(album, song) {
-     return album.songs.indexOf(song);
  };
 
  var nextSong = function() {
